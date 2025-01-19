@@ -22,6 +22,8 @@ jobs:
             - *ci
     - name: Approve Safe Changes
       if: steps.changes.outputs.unsafe == 'false'
+      env:
+        GH_TOKEN: ${{ github.token }}
       run: gh pr review ${{ github.event.pull_request.number }} --approve --body "Automatically approved."
         
           
