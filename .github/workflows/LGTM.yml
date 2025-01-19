@@ -15,9 +15,9 @@ jobs:
       with:
         filters: |
           docs: &docs
-            - **.md
+            - '**/*.md'
           ci: &ci
-            - .github/**
+            - '.github/**'
           unsafe:
             - *ci
     - name: Approve Safe Changes
