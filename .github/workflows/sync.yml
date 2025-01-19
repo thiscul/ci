@@ -25,6 +25,7 @@ jobs:
           git push
 
       - name: Sync Dev
+        if: ${{ github.ref_name == 'staging' }}
         run: |
           git checkout dev
           git merge --no-ff origin/staging
