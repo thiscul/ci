@@ -22,3 +22,12 @@ jobs:
                     What do you think? :suspect:
                     Best regards."
       
+      - name: Test Review comment
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh pr review ${{ github.event.pull_request.number }} \
+            -c -b "Hey there!
+                   What do you think? :suspect:
+                   Best regards."
+      
