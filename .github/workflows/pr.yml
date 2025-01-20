@@ -1,0 +1,24 @@
+name: Auto Review
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - staging
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Warning
+        run: |
+          title="My Custom Warning Title"
+          message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
+          echo "::warning title=$title::$message"
+      - name: Error
+        run: |
+          title="My Custom Error Title"
+          message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
+          echo "::error title=$title::$message"
