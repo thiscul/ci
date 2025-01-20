@@ -1,13 +1,13 @@
-name: Auto Review
+name: Check PR
 
 on:
   pull_request:
-    types: [opened, synchronize]
+    types: [opened, synchronize, reopened, edited, ready_for_review]
     branches:
       - staging
 
 jobs:
-  review:
+  prcheck:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
@@ -22,3 +22,17 @@ jobs:
           title="My Custom Error Title"
           message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
           echo "::error title=$title::$message"
+      - name: Notice
+        run: |
+          title="My Custom Notice Title"
+          message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
+          echo "::notice title=$title::$message"
+      - name: Debug
+        run: |
+          title="My Custom Debug Title"
+          message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
+          echo "::debug title=$title::$message"
+      - name: Summary
+        run: |
+          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+      
