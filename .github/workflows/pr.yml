@@ -18,7 +18,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh pr comment ${{ github.event.pull_request.number }} \
-            --body "Hey there! \n
-                    What do you think? :suspect: \n
+            --body "Hey there!
+                    What do you think? :suspect:
                     Best regards."
       
