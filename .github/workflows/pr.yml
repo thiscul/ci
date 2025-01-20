@@ -12,34 +12,12 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: Warning
+      - name: Test comment
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          title="My Custom Warning Title"
-          message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
-          echo "::warning title=$title::$message"
-          exit 1
-      - name: Error
-        if: ${{ !cancelled() }}
-        run: |
-          title="My Custom Error Title"
-          message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
-          echo "::error title=$title::$message"
-          exit 1
-      - name: Notice
-        if: ${{ !cancelled() }}
-        run: |
-          title="My Custom Notice Title"
-          message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
-          echo "::notice title=$title::$message"
-          exit 1
-      - name: Debug
-        if: ${{ !cancelled() }}
-        run: |
-          title="My Custom Debug Title"
-          message="Used to build and publish .NET source. Set up a specific version of the .NET and authentication to private NuGet repository"
-          echo "::debug title=$title::$message"
-      - name: Summary
-        if: ${{ !cancelled() }}
-        run: |
-          echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+          gh pr comment ${{ github.event.pull_request.number }} --body "\
+          Hey there! \
+          What do you think? :suspect: \
+          Best regards."
       
