@@ -7,10 +7,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: |
-        "$NO" || { echo "::error::Must be merged in master"; exit 1 }
+        "$NO" || (echo "::error::Must be merged in master" && exit 1)
     - if: ${{ !cancelled() }}
       run: |
-        "$NO" || { echo "::error::Must be merged in master"; exit 1 }
+        "$NO" || (echo "::error::Must be merged in master" && exit 1)
     - if: ${{ !cancelled() }}
       run: |
-        "$NO" || { echo "::error::Must be merged in master"; exit 1 }
+        "$NO" || (echo "::error::Must be merged in master" && exit 1)
