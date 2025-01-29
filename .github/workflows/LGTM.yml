@@ -7,8 +7,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - run: |
-        echo "- 1 :rocket:" >> $GITHUB_STEP_SUMMARY
-    - run: |
-        echo "- 2 :rocket:" >> $GITHUB_STEP_SUMMARY
-    - run: |
-        echo "- 3 :rocket:" >> $GITHUB_STEP_SUMMARY
+        "$NO" || { echo "::error::Must be merged in master"; exit 1 }
+    - if: ${{ !cancelled() }}
+      run: |
+        "$NO" || { echo "::error::Must be merged in master"; exit 1 }
+    - if: ${{ !cancelled() }}
+      run: |
+        "$NO" || { echo "::error::Must be merged in master"; exit 1 }
